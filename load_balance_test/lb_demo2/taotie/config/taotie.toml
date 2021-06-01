@@ -1,0 +1,13 @@
+Env="debug"
+AppId= "dtalk"
+
+[IdGenRPCClient]
+Schema = "dtalk"
+SrvName = "generator"
+Dial = "1s"
+Timeout = "1s"
+
+[Reg]
+Schema = "dtalk"
+SrvName = "taotie"
+RegAddrs = "127.0.0.1:2379"
