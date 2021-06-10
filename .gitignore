@@ -1,0 +1,6 @@
+.DS_Store
+/.idea
+pprof_test/cpu.pprof
+pprof_test/mem.pprof
+log/*
+main
