@@ -1,0 +1,15 @@
+{"level":"debug","time":"2021-04-15T10:47:10+08:00","message":"This message appears only when log level set to debug"}
+{"level":"info","time":"2021-04-15T10:47:10+08:00","message":"This message appears when log level set to debug or info"}
+{"level":"debug","foo":"bar","time":"2021-04-15T10:47:10+08:00","message":"some debug message"}
+{"level":"info","message":"This message appears when log level set to debug or info"}
+{"level":"info","message":"This message appears when log level set to debug or info"}
+{"level":"info","time":"2021-04-15T10:52:48+08:00","message":"This message appears when log level set to debug or info"}
+{"level":"info","time":"2021-04-15T10:52:57+08:00","message":"This message appears when log level set to debug or info"}
+{"level":"info","time":"2021-04-15T10:56:17.083854+08:00","message":"This message appears when log level set to debug or info"}
+{"level":"info","time":"2021-04-15T11:04:35+08:00","message":"This message appears when log level set to debug or info"}
+{"level":"debug","time":"2021-04-15T11:04:39+08:00","message":"This message appears only when log level set to debug"}
+{"level":"info","time":"2021-04-15T11:04:39+08:00","message":"This message appears when log level set to debug or info"}
+{"level":"debug","foo":"bar","time":"2021-04-15T11:04:39+08:00","message":"some debug message"}
+{"level":"debug","time":"2021-04-15T11:11:07+08:00","caller":"/Users/cccccccccchy/go/src/tttt/zerolog_test/main.go:21","message":"This message appears only when log level set to debug"}
+{"level":"info","time":"2021-04-15T11:11:07+08:00","caller":"/Users/cccccccccchy/go/src/tttt/zerolog_test/main.go:22","message":"This message appears when log level set to debug or info"}
+{"level":"debug","foo":"bar","time":"2021-04-15T11:11:07+08:00","caller":"/Users/cccccccccchy/go/src/tttt/zerolog_test/main.go:25","message":"some debug message"}

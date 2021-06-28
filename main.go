@@ -25,5 +25,6 @@ func fun() (a int) {
 
 func main() {
 	//fmt.Println(fun())
-	fmt.Println(int64(^uint(0) >> 1))
+	fmt.Println((-12340.0)>>8)
+	fmt.Println((-12340.0)/256.0)
 }
