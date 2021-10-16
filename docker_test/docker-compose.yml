@@ -1,0 +1,15 @@
+version: '3'
+
+volumes:
+  build:
+
+services:
+  ttt:
+    build:
+      context: .
+      dockerfile: compose/Dockerfile
+    image: ttt
+    container_name: ttt
+    working_dir: /app
+    volumes:
+      - "build:/app/docker_test/build"

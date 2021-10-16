@@ -11,22 +11,22 @@ import (
 type A struct {
 }
 
-func (a A)Setup(_ sarama.ConsumerGroupSession) error {
+func (a A) Setup(_ sarama.ConsumerGroupSession) error {
 	log.Info().Msg("setup")
 	return nil
 }
 
-func (a A)Cleanup(_ sarama.ConsumerGroupSession) error {
+func (a A) Cleanup(_ sarama.ConsumerGroupSession) error {
 	log.Info().Msg("clean")
 	return nil
 }
 
-func (a A)ConsumeClaim(cgs sarama.ConsumerGroupSession, cgc sarama.ConsumerGroupClaim) error {
+func (a A) ConsumeClaim(cgs sarama.ConsumerGroupSession, cgc sarama.ConsumerGroupClaim) error {
 
-	for msg := range cgc.Messages(){
+	for msg := range cgc.Messages() {
 		//fmt.Printf("%s\n", msg.Value)
 		//
-		log.Info().Int32("Partition", msg.Partition).Int64("time", time.Now().UnixNano()).Msg("conv2")
+		log.Info().Int32("Partition", msg.Partition).Int64("time", time.Now().UnixNano()).Msg("")
 		//fmt.Println()
 		cgs.MarkMessage(msg, "")
 	}
@@ -36,16 +36,16 @@ func (a A)ConsumeClaim(cgs sarama.ConsumerGroupSession, cgc sarama.ConsumerGroup
 
 func TestNewKafkaConsumer(t *testing.T) {
 	topic := KConsumerTopic{
-		Topics: []string{"pubv2"},
+		Topics:       []string{"test-topic"},
 		GroupHandler: A{},
 	}
 
 	kafkaAddress := []string{
-		"127.0.0.1:9092",
+		"172.16.101.107:9092",
 	}
 
 	groupMap := map[string]KConsumerTopic{
-		"conv2": topic,
+		"group1": topic,
 	}
 
 	consumer := NewKafkaConsumer(context.Background(), kafkaAddress, groupMap, nil)
@@ -55,15 +55,13 @@ func TestNewKafkaConsumer(t *testing.T) {
 	//	fmt.Println("xxx")
 	//}
 	//time.Sleep(10 * time.Second)
-	select {
-
-	}
+	select {}
 }
 
 func BenchmarkNewKafkaConsumer(b *testing.B) {
 	b.ResetTimer()
 	topic := KConsumerTopic{
-		Topics: []string{"pubv2"},
+		Topics:       []string{"pubv2"},
 		GroupHandler: A{},
 	}
 

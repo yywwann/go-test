@@ -73,9 +73,10 @@ func NewKafkaConsumer(ctx context.Context, addrs []string, groupTopic map[string
 	if consumer.config == nil {
 		cfg := sarama.NewConfig()
 		cfg.ClientID = "sarama_test"
-		cfg.Version = sarama.V0_11_0_0                      // kafka 版本号
+		cfg.Version = sarama.V0_11_0_0                     // kafka 版本号
 		cfg.Consumer.Offsets.Initial = sarama.OffsetOldest // 重连时从最开始的地方消费
 		cfg.Consumer.Return.Errors = true                  // 手动处理消费者错误
+		consumer.config = cfg
 	}
 
 	client, err := sarama.NewClient(addrs, consumer.config)

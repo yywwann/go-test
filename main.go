@@ -1,30 +1,41 @@
 package main
 
-import (
-	"fmt"
-	"github.com/rs/zerolog/log"
-)
+import "fmt"
 
-func A() (int, int) {
-	return 3, 1
+type A struct {
+	name string
+	age  int32
+	sex  int32
 }
 
-func fun() (a int) {
-	a = 3
-	defer func() {
-		log.Info().Int("a1", a).Msg("")
-	}()
-	b, a := A()
-	log.Info().Int("a2", a).Msg("")
-	log.Info().Int("b", b).Msg("")
-	if a := 2; a== 2 {
-		a = 2
-	}
-	return a
+func (a A) String() string {
+	return a.name
+}
+
+type B struct {
+	A
+	Role int32
+}
+
+type C struct {
+	A
 }
 
 func main() {
-	//fmt.Println(fun())
-	fmt.Println((-12340.0)>>8)
-	fmt.Println((-12340.0)/256.0)
+	b := B{
+		A:    A{},
+		Role: 0,
+	}
+	b.name = "1"
+	fmt.Println(b, b.String(), b.A.String())
+	b.A.name = "2"
+	fmt.Println(b, b.String(), b.A.String())
+	c := C{
+		A: A{},
+	}
+	c.name = "3"
+	fmt.Println(c, c.String(), c.A.String())
+	c.A.name = "4"
+	fmt.Println(c, c.String(), c.A.String())
+
 }
