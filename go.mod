@@ -30,11 +30,10 @@ require (
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	github.com/rs/zerolog v1.21.0
 	github.com/spf13/cobra v1.1.3
+	github.com/xuri/excelize/v2 v2.4.1
 	gitlab.33.cn/btrade/auto_trade_tools v1.2.8
 	gitlab.33.cn/chat/dtalk v1.2.0
 	go.uber.org/zap v1.17.0
-	golang.org/x/crypto v0.0.0-20210711020723-a769d52b0f97 // indirect
-	golang.org/x/net v0.0.0-20210726213435-c6fcb2dbf985 // indirect
 	golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c // indirect
 	golang.org/x/time v0.0.0-20210220033141-f8bda1e9f3ba
 	google.golang.org/genproto v0.0.0-20210722135532-667f2b7c528f // indirect

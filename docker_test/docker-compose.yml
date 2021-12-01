@@ -1,8 +1,5 @@
 version: '3'
 
-volumes:
-  build:
-
 services:
   ttt:
     build:
@@ -12,4 +9,5 @@ services:
     container_name: ttt
     working_dir: /app
     volumes:
-      - "build:/app/docker_test/build"
+      - "./build:/app/build"
+    command: /app/build/main

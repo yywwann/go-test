@@ -13,28 +13,34 @@ func run(stop <-chan struct{}, done chan<- struct{}) {
 			fmt.Println("stop...")
 			done <- struct{}{}
 			return
-		case t := <-time.After(time.Second):
-			fmt.Println("hello", t.String())
+		//case t := <-time.After(time.Second):
+		//	fmt.Println("hello", t.String())
+		default:
+			time.Sleep(time.Second)
+			fmt.Println("do nothing")
 		}
 	}
+
 }
 
 func main() {
 	// 一对多
-	stop := make(chan struct{})
+	stop := make(chan struct{}, 1)
 	// 多对一
-	done := make(chan struct{}, 10)
-	for i := 0; i < 10; i++ {
-		go run(stop, done)
-	}
+	done := make(chan struct{}, 1)
+	//for i := 0; i < cap(done); i++ {
+	//	go run(stop, done)
+	//}
+	go run(stop, done)
 
 	// 5s 后退出
 	time.Sleep(5 * time.Second)
-	close(stop)
+	fmt.Println("stop")
+	stop <- struct{}{}
 
-	for i := 0; i < 10; i++ {
-		<-done
-		fmt.Println(time.Now())
-	}
+	//for i := 0; i < cap(done); i++ {
+	//	<-done
+	//	fmt.Println("done stop", time.Now())
+	//}
 	fmt.Println("all done")
 }

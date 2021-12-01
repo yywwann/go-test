@@ -17,7 +17,7 @@ import (
 
 func BenchmarkPubv2_1(b *testing.B) {
 	pub := &Pubv2{
-		KafkaPub: NewPubv2([]string{"172.16.101.107:9092"}),
+		KafkaPub: NewPubv2([]string{"10.89.3.6:9092"}),
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
