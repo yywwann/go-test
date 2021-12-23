@@ -12,7 +12,7 @@ type Pubv1 struct {
 func NewPubv1(brokers []string) kafkav1.SyncProducer {
 	kc := kafkav1.NewConfig()
 	kc.Producer.RequiredAcks = kafkav1.WaitForAll // Wait for all in-sync replicas to ack the message
-	kc.Producer.Retry.Max = 10                  // Retry up to 10 times to produce the message
+	kc.Producer.Retry.Max = 10                    // Retry up to 10 times to produce the message
 	kc.Producer.Return.Successes = true
 	pub, err := kafkav1.NewSyncProducer(brokers, kc)
 	if err != nil {

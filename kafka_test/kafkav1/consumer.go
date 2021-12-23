@@ -5,7 +5,6 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-
 type Process interface {
 	Deal(m string) error
 }

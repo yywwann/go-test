@@ -14,10 +14,10 @@ var debug *bool
 func getWriter(filename string) io.Writer {
 	return &lumberjack.Logger{
 		Filename:   filename,
-		MaxSize:    10,  //最大M数，超过则切割
-		MaxBackups: 5,   //最大文件保留数，超过就删除最老的日志文件
-		MaxAge:     30,  //保存30天
-		Compress:   false,//是否压缩
+		MaxSize:    10,    //最大M数，超过则切割
+		MaxBackups: 5,     //最大文件保留数，超过就删除最老的日志文件
+		MaxAge:     30,    //保存30天
+		Compress:   false, //是否压缩
 	}
 }
 
@@ -32,7 +32,6 @@ func NewLog(filename string) zerolog.Logger {
 		out = io.MultiWriter(os.Stderr, getWriter(filename))
 		logger = zerolog.New(out).With().Timestamp().Logger()
 	}
-
 
 	return logger
 }

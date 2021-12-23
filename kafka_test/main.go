@@ -10,19 +10,19 @@ import (
 type A struct {
 }
 
-func (a A)Setup(_ sarama.ConsumerGroupSession) error {
+func (a A) Setup(_ sarama.ConsumerGroupSession) error {
 	log.Info().Msg("setup")
 	return nil
 }
 
-func (a A)Cleanup(_ sarama.ConsumerGroupSession) error {
+func (a A) Cleanup(_ sarama.ConsumerGroupSession) error {
 	log.Info().Msg("clean")
 	return nil
 }
 
-func (a A)ConsumeClaim(cgs sarama.ConsumerGroupSession, cgc sarama.ConsumerGroupClaim) error {
+func (a A) ConsumeClaim(cgs sarama.ConsumerGroupSession, cgc sarama.ConsumerGroupClaim) error {
 
-	for msg := range cgc.Messages(){
+	for msg := range cgc.Messages() {
 		//fmt.Printf("%s\n", msg.Value)
 		//
 		log.Info().Int32("Partition", msg.Partition).
@@ -38,7 +38,7 @@ func (a A)ConsumeClaim(cgs sarama.ConsumerGroupSession, cgc sarama.ConsumerGroup
 
 func main() {
 	topic := mq.KConsumerTopic{
-		Topics: []string{"test9093"},
+		Topics:       []string{"test9093"},
 		GroupHandler: A{},
 	}
 
@@ -60,7 +60,5 @@ func main() {
 	//	fmt.Println("xxx")
 	//}
 	//time.Sleep(10 * time.Second)
-	select {
-
-	}
+	select {}
 }

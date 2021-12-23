@@ -12,12 +12,6 @@ import (
 	"github.com/Shopify/sarama"
 )
 
-
-
-
-
-
-
 func main() {
 	if len(os.Args) != 3 {
 		fmt.Fprintf(os.Stderr, "Usage: %s <broker> <topic>\n",

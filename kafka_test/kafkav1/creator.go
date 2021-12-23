@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-func NewKafkaConsumers(topic string, group string,  consumerNum int, brokers []string) map[string]*Consumer {
+func NewKafkaConsumers(topic string, group string, consumerNum int, brokers []string) map[string]*Consumer {
 	store := make(map[string]*Consumer)
 	num := int(consumerNum)
 	for i := 0; i < num; i++ {

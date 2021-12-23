@@ -12,7 +12,7 @@ import (
 3. 子 log
 如果是 debug, 就输出容易肉眼看的
 否则输出格式化日志 json 格式
- */
+*/
 var log = logger.NewLog("./log/info.log")
 
 func main() {

@@ -17,7 +17,6 @@ func PathExists(path string) (bool, error) {
 	return false, err
 }
 
-
 func main() {
 	//erre := os.Mkdir("./data/program/goapp/golang", 0777)
 	err := os.MkdirAll("./log", 0777)
