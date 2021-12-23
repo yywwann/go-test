@@ -1,41 +1,42 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
-type A struct {
-	name string
-	age  int32
-	sex  int32
+type testInt struct {
+	Num int
 }
 
-func (a A) String() string {
-	return a.name
+func (t *testInt) print() {
+	fmt.Println(t.Num)
 }
 
-type B struct {
-	A
-	Role int32
-}
-
-type C struct {
-	A
+func pts(t *testInt) {
+	fmt.Println(t.Num)
 }
 
 func main() {
-	b := B{
-		A:    A{},
-		Role: 0,
+	a := make([]int, 0)
+	for i := 1; i < 1000; i++ {
+		a = append(a, i)
 	}
-	b.name = "1"
-	fmt.Println(b, b.String(), b.A.String())
-	b.A.name = "2"
-	fmt.Println(b, b.String(), b.A.String())
-	c := C{
-		A: A{},
+	t := &testInt{
+		Num: 0,
 	}
-	c.name = "3"
-	fmt.Println(c, c.String(), c.A.String())
-	c.A.name = "4"
-	fmt.Println(c, c.String(), c.A.String())
 
+	t.print()
+	go func() {
+		time.Sleep(1 * time.Second)
+		t.print()
+	}()
+
+	Test(t)
+	t.print()
+	select {}
+}
+
+func Test(t *testInt) {
+	t.Num = 2
 }
