@@ -39,6 +39,8 @@ func GetDataChansWithCtx(ctx context.Context, fns []DataFn) chan *dataChan {
 			}()
 
 			select {
+			case p := <-panicChan:
+				panic(p)
 			case <-ctx.Done():
 				result <- &dataChan{
 					Data: nil,
