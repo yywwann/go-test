@@ -3,20 +3,23 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/pkg/errors"
 	"math/rand"
 	"strconv"
 	"time"
+
+	"github.com/pkg/errors"
 )
 
-//
+// dataChan 值接收结构体
 type dataChan struct {
 	Data interface{}
 	Err  error
 }
 
+// DataFn 值方法
 type DataFn func() (interface{}, error)
 
+// GetDataChansWithCtx 根据值方法列表返回值接收通道, 附带超时控制
 func GetDataChansWithCtx(ctx context.Context, fns []DataFn) chan *dataChan {
 	result := make(chan *dataChan, len(fns))
 	for _, fn := range fns {
@@ -57,6 +60,7 @@ func GetDataChansWithCtx(ctx context.Context, fns []DataFn) chan *dataChan {
 	return result
 }
 
+// GetDataChans 根据值方法列表返回值接收通道
 func GetDataChans(fns []DataFn) chan *dataChan {
 	result := make(chan *dataChan, len(fns))
 	for _, fn := range fns {
