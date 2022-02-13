@@ -1,5 +1,10 @@
 package main
 
+import (
+	"fmt"
+	"time"
+)
+
 //func main() {
 //	path := []byte("AAAA/BBBBBBBBB")
 //	fmt.Println("path =>", string(path), "path.len =>", len(path), "path.cap =>", cap(path))
@@ -16,23 +21,32 @@ package main
 //	fmt.Println("dir2 =>",string(dir2), "dir2.len =>", len(dir2), "path.cap =>", cap(dir2)) //prints: dir2 => BBBBBBBBB
 //}
 
-type Widget struct {
-	X, Y int
+type user struct {
+	name string
+	age  int8
 }
-type Label struct {
-	Widget     // Embedding (delegation)
-	X      int // Aggregation
+
+var u = user{name: "Ankur", age: 25}
+var g = &u
+
+func modifyUser(pu *user) {
+	fmt.Println("modifyUser Received Vaule", pu)
+	pu.name = "Anand"
+}
+func printUser(u <-chan *user) {
+	time.Sleep(2 * time.Second)
+	fmt.Println("printUser goRoutine called", <-u)
 }
 
 func main() {
-	var label = Label{
-		Widget: Widget{
-			10,
-			10,
-		},
-		X: 12,
-	}
-	label.Widget.X = 11
-	label.Y = 12
-	label.X = 11
+	c := make(chan *user, 5)
+	c <- g
+	fmt.Println(g)
+	// modify g
+	g = &user{name: "Ankur Anand", age: 100}
+	u.age += 1
+	go printUser(c)
+	go modifyUser(g)
+	time.Sleep(5 * time.Second)
+	fmt.Println(g)
 }

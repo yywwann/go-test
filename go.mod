@@ -31,8 +31,6 @@ require (
 	github.com/rs/zerolog v1.21.0
 	github.com/spf13/cobra v1.1.3
 	github.com/xuri/excelize/v2 v2.4.1
-	gitlab.33.cn/btrade/auto_trade_tools v1.2.8
-	gitlab.33.cn/chat/dtalk v1.2.0
 	go.uber.org/zap v1.17.0
 	golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c // indirect
 	golang.org/x/time v0.0.0-20210220033141-f8bda1e9f3ba
